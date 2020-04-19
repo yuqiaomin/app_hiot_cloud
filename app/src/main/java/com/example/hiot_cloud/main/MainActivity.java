@@ -1,10 +1,12 @@
- package com.example.hiot_cloud;
+ package com.example.hiot_cloud.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.hiot_cloud.R;
+
+ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

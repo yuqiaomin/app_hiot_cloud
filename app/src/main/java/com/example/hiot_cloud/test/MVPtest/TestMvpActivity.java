@@ -1,7 +1,5 @@
 package com.example.hiot_cloud.test.MVPtest;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,19 +7,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.hiot_cloud.MainActivity;
+import com.example.hiot_cloud.main.MainActivity;
 import com.example.hiot_cloud.R;
+import com.example.hiot_cloud.base.BaseActivity;
+import com.example.hiot_cloud.test.MVPtest.dagger2test.DaggerPresenterComponent;
+import com.example.hiot_cloud.test.MVPtest.dagger2test.PresenterComponent;
 import com.example.hiot_cloud.test.MVPtest.model.User;
 
-public class TestMvpActivity extends AppCompatActivity implements TestView{
+import javax.inject.Inject;
+
+
+public class TestMvpActivity extends BaseActivity<TestView,TestPresenter> implements TestView{
+
+    @Inject
+    TestPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        getComponent().inject(this);
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_test_mvp);
         final EditText etName = findViewById(R.id.et_username);
         final EditText etPassword = findViewById(R.id.et_password);
-        final TestPresenter presenter = new TestPresenter(this);
+//      final TestPresenter presenter = new TestPresenter();
         Button btLogin = findViewById(R.id.bt_login);
 
         final User user = new User();
@@ -42,15 +52,21 @@ public class TestMvpActivity extends AppCompatActivity implements TestView{
     }
 
     @Override
+    public TestPresenter createPresenter() {
+        return presenter;
+    }
+
+
+    @Override
     public void showMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
-//    private void login(User user) {
-//        if ("admin".equals(user.getUserName()) && "admin".equals(user.getPassword())){
-//            Toast.makeText(this,"登入成功",Toast.LENGTH_SHORT).show();
-//        }else{
-//            Toast.makeText(this,"用户名或密码错误！",Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    /**
+     * 创建注入器
+     * @return
+     */
+    public PresenterComponent getComponent(){
+        return DaggerPresenterComponent.builder().build();
+    }
 }
