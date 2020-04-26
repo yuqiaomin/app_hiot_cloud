@@ -11,4 +11,5 @@ import dagger.Component;
 public interface PresenterComponent {
 
     void inject(TestMvpActivity testMvpActivity);
+
 }
