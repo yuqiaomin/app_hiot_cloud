@@ -15,7 +15,7 @@ import com.example.hiot_cloud.injection.module.ActivityModule;
 /**
  * MVP架构Activity层基类
  */
-public abstract class BaseActivity<V extends BaseView,P extends BasePresenter> extends AppCompatActivity implements BaseView {
+public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>> extends AppCompatActivity implements BaseView {
     /**
      * 活动注入器
      */
@@ -25,11 +25,14 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter> e
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        InjectIndependies();
         presenter = createPresenter();
-        presenter.setView(this);
+        presenter.setView((V) this);
     }
 
     public abstract P createPresenter();
+
+    public abstract void InjectIndependies();
 
     @Override
     protected void onDestroy() {
