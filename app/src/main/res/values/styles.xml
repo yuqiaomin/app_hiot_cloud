@@ -19,4 +19,9 @@
         <item name="android:drawablePadding">2dp</item>
     </style>
 
+    <style name="AppTheme.NoAction">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>
