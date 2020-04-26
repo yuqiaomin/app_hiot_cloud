@@ -1,4 +1,4 @@
-package com.example.hiot_cloud.base;
+package com.example.hiot_cloud.UI.base;
 
 /**
  * MVP架构presenter层基类

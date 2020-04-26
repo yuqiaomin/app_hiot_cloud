@@ -7,11 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.hiot_cloud.main.MainActivity;
+import com.example.hiot_cloud.UI.main.MainActivity;
 import com.example.hiot_cloud.R;
-import com.example.hiot_cloud.base.BaseActivity;
-import com.example.hiot_cloud.test.MVPtest.dagger2test.DaggerPresenterComponent;
-import com.example.hiot_cloud.test.MVPtest.dagger2test.PresenterComponent;
+import com.example.hiot_cloud.UI.base.BaseActivity;
 import com.example.hiot_cloud.test.MVPtest.model.User;
 
 import javax.inject.Inject;

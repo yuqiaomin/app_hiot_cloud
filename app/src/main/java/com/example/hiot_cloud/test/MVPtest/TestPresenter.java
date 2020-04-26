@@ -1,6 +1,6 @@
 package com.example.hiot_cloud.test.MVPtest;
 
-import com.example.hiot_cloud.base.BasePresenter;
+import com.example.hiot_cloud.UI.base.BasePresenter;
 import com.example.hiot_cloud.test.MVPtest.dagger2test.ThirdObj;
 import com.example.hiot_cloud.test.MVPtest.model.User;
 
