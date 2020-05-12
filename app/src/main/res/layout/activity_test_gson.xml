@@ -5,31 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".test.networktest.TestOkHttpActivity">
+    tools:context=".test.networktest.TestGsonActivity">
 
     <Button
-        android:id="@+id/btn_okhttp_execute"
-        android:text="execute"
+        android:id="@+id/btn_from_json"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Josn转对象" />
+    <Button
+        android:id="@+id/btn_to_json"
+        android:text="对象转Josn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_gson_list"
+        android:text="Gson转列表"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:id="@+id/btn_okhttp_enqueue"
-        android:text="enqueue"
+        android:id="@+id/btn_gson_map"
+        android:text="Gson转Map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:id="@+id/btn_okhttp_login"
-        android:text="登录"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_okhttp_userinfo"
-        android:text="用户信息"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_okhttp_update_email"
-        android:text="修改邮箱"
+        android:id="@+id/btn_gson_next"
+        android:text="Gson转嵌套对象"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

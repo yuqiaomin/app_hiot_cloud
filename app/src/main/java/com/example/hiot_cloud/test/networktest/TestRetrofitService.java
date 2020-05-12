@@ -16,7 +16,7 @@ import retrofit2.http.Query;
  */
 public interface TestRetrofitService {
     //public static final String basUrl = "http://163.177.151.109";
-    public static final String basUrl = "http://114.67.88.191:8080";
+    public static final String baseUrl = "http://114.67.88.191:8080";
 
     @GET("/")
     Call<ResponseBody> test();
@@ -32,6 +32,9 @@ public interface TestRetrofitService {
 
     @GET("/user/one")
     Call<ResponseBody> getUserInfo(@Header("Authorization")String authorization);
+
+    @GET("/user/one")
+    Call<ResultBase<UserBean>> getUserInfo2(@Header("Authorization")String authorization);
 
     @PUT("/user/email")
     Call<ResponseBody> updateEmail(@Header("Authorization")String authorization,

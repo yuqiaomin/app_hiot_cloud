@@ -27,7 +27,7 @@ public class TestOkHttpActivity extends AppCompatActivity {
 
 
     //private static final String basUrl = "http://163.177.151.109";
-    private static final String basUrl = "http://114.67.88.191:8080";
+    private static final String baseUrl = "http://114.67.88.191:8080";
     private static final String TAG = "TestOkHttpActivity";
 
     @Override
@@ -43,12 +43,11 @@ public class TestOkHttpActivity extends AppCompatActivity {
                 testExecute();
             }
         });
-        //enqueue方法测试
-        Button btnEnqueue = findViewById(R.id.btn_okhttp_enquene);
+        //enqueue方法测试u
+        Button btnEnqueue = findViewById(R.id.btn_okhttp_enqueue);
         btnEnqueue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 testEnqueue();
             }
         });
@@ -57,7 +56,7 @@ public class TestOkHttpActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login("apptest","abc123","app");
+                login("yuqiaominzs","abc123","app");
             }
         });
         //获取用户信息
@@ -65,7 +64,7 @@ public class TestOkHttpActivity extends AppCompatActivity {
         btnGetUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getUserInfo("58d2e00d4def465d901394b67094dee4_fde4d247b672423ab6860f2b73bffc3c_use");
+                getUserInfo("30cc4b1b1f9c4d029edba12949f0cbf3_f24754b3751b4383ac9363b51802dab4_use");
             }
         });
 
@@ -75,8 +74,8 @@ public class TestOkHttpActivity extends AppCompatActivity {
         btnUpdateEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateEmail("58d2e00d4def465d901394b67094dee4_fde4d247b672423ab6860f2b73bffc3c_use",
-                        "email@qq.com");
+                updateEmail("30cc4b1b1f9c4d029edba12949f0cbf3_f24754b3751b4383ac9363b51802dab4_use",
+                        "11123@qq.com");
             }
         });
     }
@@ -89,10 +88,10 @@ public class TestOkHttpActivity extends AppCompatActivity {
     private void updateEmail(String authorization, String email) {
         OkHttpClient okHttpClient = new OkHttpClient();
         FormBody body = new FormBody.Builder().build();
-        String url = basUrl + "/user/email?email=" + email;
+        String url = baseUrl + "/user/email?email=" + email;
         Request request = new Request.Builder().put(body).url(url)
                 .header("Authorization", authorization).build();
-        callEqueue(okHttpClient, request);
+        callEnqueue(okHttpClient, request);
     }
 
     /**
@@ -103,13 +102,13 @@ public class TestOkHttpActivity extends AppCompatActivity {
 
         OkHttpClient okHttpClient = new OkHttpClient();
         FormBody body = new FormBody.Builder().build();
-        String url = basUrl + "/user/one";
+        String url = baseUrl + "/user/one";
         Request request = new Request.Builder().get().url(url)
                 .header("Authorization", authorization).build();
-        callEqueue(okHttpClient, request);
+        callEnqueue(okHttpClient, request);
     }
 
-    private void callEqueue(OkHttpClient okHttpClient, Request request) {
+    private void callEnqueue(OkHttpClient okHttpClient, Request request) {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -132,10 +131,10 @@ public class TestOkHttpActivity extends AppCompatActivity {
     private void login(String userName, String password, String loginCode) {
         OkHttpClient okHttpClient = new OkHttpClient();
         FormBody body = new FormBody.Builder().build();
-        String url = basUrl + String.format("/auth/login?username=%s&password=%s&loginCode=%s" ,
+        String url = baseUrl + String.format("/auth/login?username=%s&password=%s&loginCode=%s" ,
                 userName, password, loginCode);
         Request request = new Request.Builder().post(body).url(url).build();
-        callEqueue(okHttpClient, request);
+        callEnqueue(okHttpClient, request);
     }
 
     /**
@@ -148,7 +147,7 @@ public class TestOkHttpActivity extends AppCompatActivity {
             public void run() {
                 super.run();
                 OkHttpClient okHttpClient = new OkHttpClient();
-                Request request = new Request.Builder().url(basUrl).build();
+                Request request = new Request.Builder().url(baseUrl).build();
                 try {
                     Response response = okHttpClient.newCall(request).execute();
                     Log.d(TAG, "run: " + response.body().string());
@@ -164,7 +163,7 @@ public class TestOkHttpActivity extends AppCompatActivity {
      */
     private void testEnqueue() {
         OkHttpClient okHttpClient = new OkHttpClient();
-        Request request = new Request.Builder().url(basUrl).build();
-        callEqueue(okHttpClient, request);
+        Request request = new Request.Builder().url(baseUrl).build();
+        callEnqueue(okHttpClient, request);
     }
 }
